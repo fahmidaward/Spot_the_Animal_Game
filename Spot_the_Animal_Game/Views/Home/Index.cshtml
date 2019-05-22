@@ -1,0 +1,440 @@
+﻿@using System.Web;
+@using System.Web.Mvc;
+@using System.Web.WebPages;
+@model WebApplication1.Models.game
+
+@{
+    ViewBag.Title = "Game";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var imagePath = @Model.ImagePath;
+    var pass = 0;
+
+}
+
+<!DOCTYPE html>
+@*<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script type="text/javascript" language="javascript">
+
+        function Lnew() {
+            var i;
+            var max = -Infinity;
+            for (i = 0; i < arguments.length; i++) {
+                if (arguments[i] > max) {
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+        //function LNew(n) {
+        //    var url = "/Home/AIndex?Totalcount=" + n;
+        //    window.location = url;
+        //}
+    </script>
+</head>*@
+<html>
+<head>
+    <title>Display Image on the Fly</title>
+</head>
+<body>
+
+    <h1>
+        <div class="display-field" style="color:red">
+            @Html.DisplayFor(model => model.Str)
+        </div>
+    </h1>
+    <br />
+    <h2>
+        <div class="display-field" style="color:red">
+            @Html.DisplayFor(model => model.Str2)
+        </div>
+    </h2>
+    <br />
+    <h2>
+        <div class="display-field" style="color:red">
+            @Html.DisplayFor(model => model.Str1)
+        </div>
+    </h2>
+    
+    <table>
+        <tr>
+            <td style="width:300px;">
+
+
+
+                <div id="AAAA" style="padding:10px;">
+
+
+                    @if (Model.Round == 1 && Model.Totalcount ==0)
+                    {
+                   
+                        <input type="image"  src="~/Content/images/ele2.png" onclick="location.href='@Url.Action("AIndex", "Home", new { id = Model.Count, idd = Model.Round, iddd=Model.Totalcount+1 })'" />
+                        
+                 
+                        @*<input type="image" name="imgOnlineDesignReq" id="Image1" src="~/Content/images/ele2.png" onclick="PostURLNew();return false;" style="border-width:10px;" />*@
+                        @*<input type="image" src="~/Content/images/ele2.png" onclick="location.href='@Url.Action("AIndex", "Home", new { id = Model.Count, idd = Model.Round, iddd=Model.Totalcount+1, str=Model.Str, str1=Model.Str1 })'" />*@
+                        
+                    }
+                    else if (Model.Round == 2)
+                    {
+                        <input type="image" src="~/Content/images/ele2.png" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 3)
+                    {
+                        <input type="image" src="~/Content/images/ele2.png" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 4)
+                    {
+                        <input type="image" src="~/Content/images/ele2.png" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else
+                    {
+                        <p></p>
+                    }
+                </div>
+
+
+            </td>
+
+            <td style="width:300px;">
+                <div style="padding:10px;">
+                    @if (Model.Round == 1)
+                    {
+                        <input type="image" src="~/Content/images/monkey.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 2)
+                    {
+                        <input type="image" src="~/Content/images/monkey.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1 , idd = Model.Round, iddd=Model.Totalcount})'" />
+                    }
+                    else if (Model.Round == 3 && Model.Totalcount==0)
+                    {
+                        <input type="image" src="~/Content/images/monkey.jpg" onclick="location.href='@Url.Action("AIndex", "Home", new { id = Model.Count, idd = Model.Round, iddd=Model.Totalcount+1 })'" />
+
+                    }
+                    else if (Model.Round == 4)
+                    {
+                        <input type="image" src="~/Content/images/monkey.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1 , idd = Model.Round, iddd=Model.Totalcount})'" />
+                    }
+                    else
+                    {
+                        <p></p>
+                    }
+
+                </div>
+
+
+            </td>
+            <td style="width:300px;">
+                <div style="padding:10px;">
+                    @if (Model.Round == 1)
+                    {
+                        <input type="image" src="~/Content/images/gir.png" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 2 )
+                    {
+                        
+
+
+                        <input type="image" src="~/Content/images/gir.png" onclick="location.href='@Url.Action("AIndex", "Home", new { id = Model.Count, idd = Model.Round, iddd=1 })'" />
+
+
+                    }
+                    else if (Model.Round == 3)
+                    {
+                        <input type="image" src="~/Content/images/gir.png" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 4)
+                    {
+                        <input type="image" src="~/Content/images/gir.png" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else
+                    {
+                        <p></p>
+                    }
+
+
+                </div>
+
+
+            </td>
+        </tr>
+        <tr>
+            <td style="width:300px;">
+                <div style="padding:10px;">
+
+                    @if (Model.Round == 1)
+                    {
+                        <input type="image" src="~/Content/images/fox.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd = Model.Totalcount })'" />
+                    }
+
+                    else if (Model.Round == 2)
+                    {
+                        <input type="image" src="~/Content/images/fox.jpg" style="visibility:hidden"/>
+                        <input type="image" src="~/Content/images/fox.jpg" onclick="location.href='@Url.Action("AIndex", "Home", new { id = Model.Count, idd = Model.Round, iddd=2})'" />
+                    }
+                    else if (Model.Round == 3)
+                    {
+                        <input type="image" src="~/Content/images/fox.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1 , idd = Model.Round, iddd=Model.Totalcount})'" />
+                    }
+                    else if (Model.Round == 4)
+                    {
+                        <input type="image" src="~/Content/images/fox.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round , iddd=Model.Totalcount})'" />
+                    }
+                    else
+                    {
+                        < p ></ p >
+                    }
+
+                </div>
+            </td>
+            <td style="width:300px;">
+                <div style="padding:10px;">
+                    
+                    @if (Model.Round == 1)
+                    {
+                        <input type="image" src="~/Content/images/goat.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                   
+                    else if (Model.Round == 2)
+                    {
+
+                        <input type="image" src="~/Content/images/goat.jpg"  style="visibility:hidden"/>
+                        <input type="image" src="~/Content/images/goat.jpg" onclick="location.href='@Url.Action("AIndex", "Home", new { id = Model.Count, idd = Model.Round, iddd=3 })'"/>
+
+
+                    }
+                    else if (Model.Round == 3)
+                    {
+                        <input type="image" src="~/Content/images/goat.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 4)
+                    {
+                        <input type="image" src="~/Content/images/goat.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1 , idd = Model.Round, iddd=Model.Totalcount})'" />
+                    }
+                    else
+                    {
+                        <p></p>
+                    }
+
+                </div>
+
+
+            </td>
+            <td style="width:300px;">
+                <div style="padding:10px;">
+
+                    @if (Model.Round == 1)
+                    {
+                        <input type="image" src="~/Content/images/lion.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd = Model.Totalcount })'" />
+                    }
+
+                    else if (Model.Round == 2)
+                    {
+
+                        <input type="image" src="~/Content/images/lion.jpg"  style="visibility:hidden"/>
+                        <input type="image" src="~/Content/images/lion.jpg" onclick="location.href='@Url.Action("AIndex", "Home", new { id = Model.Count, idd = Model.Round, iddd=4 })'" />
+
+
+
+                    }
+                    else if (Model.Round == 3)
+                    {
+                        <input type="image" src="~/Content/images/lion.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1 , idd = Model.Round, iddd=Model.Totalcount})'" />
+                    }
+                    else if (Model.Round == 4)
+                    {
+                        <input type="image" src="~/Content/images/lion.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else
+                    {
+                        < p ></ p >
+                    }
+
+
+                </div>
+
+
+            </td>
+        </tr>
+        <tr>
+            <td style="width:300px;">
+                <div style="padding:10px;">
+
+                    @if (Model.Round == 1)
+                    {
+                        <input type="image" src="~/Content/images/cat1.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd = Model.Totalcount })'" />
+                    }
+
+                    else if (Model.Round == 2)
+                    {
+                        <input type="image" src="~/Content/images/cat1.jpg" style="visibility:hidden"/>
+
+                        <input type="image" src="~/Content/images/cat1.jpg" onclick="location.href='@Url.Action("AIndex", "Home", new { id = Model.Count, idd = Model.Round, iddd=5})'" />
+
+                    }
+                    else if (Model.Round == 3)
+                    {
+                        <input type="image" src="~/Content/images/cat1.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 4)
+                    {
+                        <input type="image" src="~/Content/images/cat1.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1 , idd = Model.Round, iddd=Model.Totalcount})'" />
+                    }
+                    else
+                    {
+                        <p></p>
+                    }
+
+                </div>
+            </td>
+            <td style="width:300px;">
+                <div style="padding:10px;">
+                    @if (Model.Round == 1)
+                    {
+                        <input type="image" src="~/Content/images/cat.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 2)
+                    {
+                        <input type="image" src="~/Content/images/cat.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 3)
+                    {
+                        <input type="image" src="~/Content/images/cat.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 4)
+                    {
+                        <input type="image" src="~/Content/images/cat.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd=Model.Totalcount })'" />
+                    }
+                    else
+                    {
+                        <p></p>
+                    }
+
+                </div>
+
+
+            </td>
+            <td style="width:300px;">
+                <div style="padding:10px;">
+                    @if (Model.Round == 1)
+                    {
+                        <input type="image" src="~/Content/images/cola.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd = Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 2)
+                    {
+                        <input type="image" src="~/Content/images/cola.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd = Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 3)
+                    {
+                        <input type="image" src="~/Content/images/cola.jpg" onclick="location.href='@Url.Action("IIndex", "Home", new { id = Model.Count + 1, idd = Model.Round, iddd = Model.Totalcount })'" />
+                    }
+                    else if (Model.Round == 4&& Model.Totalcount==0)
+                    {
+                        <input type="image" src="~/Content/images/cola.jpg" onclick="location.href='@Url.Action("AIndex", "Home", new { id = Model.Count, idd = Model.Round, iddd=Model.Totalcount+1 })'"/>
+                    }
+                    else
+                    {
+                        <p></p >
+                    }
+
+                </div>
+
+
+            </td>
+        </tr>
+
+    </table>
+
+
+
+
+    @*<input id="mudetails" type="submit" value=" SUBMIT YOUR SELECTION" style="color:aquamarine;font: bold 18px arial"/>*@
+
+    @if (Model.Round == 1 && Model.Totalcount == 1)
+    {
+        pass = 300;
+    }
+    else if (Model.Round == 2 && Model.Totalcount >=5)
+    {
+
+        if (Model.Totalcount == 5)
+        {
+            pass = 400;
+        }
+
+        else
+        {
+            pass = 700;
+
+        }
+    }
+    else if (Model.Round == 3 && Model.Totalcount == 1)
+    {
+        pass = 500;
+    }
+    else if (Model.Round == 4 && Model.Totalcount == 1)
+    {
+        pass = 600;
+    }
+    else if (Model.Round < 1 && Model.Round > 4 && Model.Totalcount != 0)
+    {
+        pass = 0;
+    }
+
+
+    @if (Model.Round == 0)
+    {
+        <div style="visibility: hidden;">
+
+            <button type="button" style="color:blue; background-color:aquamarine; font: bold 18px arial" onclick="location.href = '@Url.Action("IIndex", "Home", new { id = pass, idd = Model.Round, iddd=Model.Totalcount })'">SUBMIT YOUR SELECTION</button>
+
+        </div>
+    }
+    else if (pass == 700 || pass ==1)
+    {
+
+        if (Model.Totalcount != 0 && Model.Totalcount <5)
+        {
+            <div style="visibility: hidden;">
+                var num = Model.Totalcount;
+                var n = num.ToString();
+                Response.Write("
+                <script>alert('Click Again All the Five Brown Animals,')</script>");
+                <button type="button" style="color:blue; background-color:aquamarine; font: bold 18px arial" onclick="location.href = '@Url.Action("IIndex", "Home", new { id = 300, idd = Model.Round, iddd=Model.Totalcount })'">SUBMIT YOUR SELECTION</button>
+            </div>
+        }
+        if (Model.Totalcount > 5)
+        {
+            <div style="visibility: hidden;">
+                var num = Model.Totalcount;
+                var n = num.ToString();
+                Response.Write("
+                <script>alert('You Clicked a Brown Animal more than once. Click Again All the Five Brown Animals,')</script>");
+                <button type="button" style="color:blue; background-color:aquamarine; font: bold 18px arial" onclick="location.href = '@Url.Action("IIndex", "Home", new { id = 300, idd = Model.Round, iddd=Model.Totalcount })'">SUBMIT YOUR SELECTION</button>
+            </div>
+        }
+    }
+    else if (pass == 0 && Model.Totalcount<5)
+    {
+        <div style="visibility: visible;">
+
+            <button type="button" style="color:blue; background-color:aquamarine; font: bold 18px arial" onclick="location.href = '@Url.Action("IIndex", "Home", new { id = pass, idd = Model.Round, iddd=Model.Totalcount })'">SUBMIT YOUR SELECTION</button>
+
+        </div>
+    }
+    else
+    {
+        <div style="visibility: visible;">
+
+            <button type="button" style="color:blue; background-color:aquamarine; font: bold 18px arial" onclick="location.href = '@Url.Action("IIndex", "Home", new { id = pass, idd = Model.Round, iddd=Model.Totalcount })'">SUBMIT YOUR SELECTION</button>
+
+        </div>
+    }
+    <br>
+    <br>
+
+
+
+</body>
+</html>
